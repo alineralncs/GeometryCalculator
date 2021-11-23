@@ -2,8 +2,6 @@ import 'dart:io';
 import 'dart:math';
 import 'GeometryCalculator.dart';
 
-//import 'opcoes.dart';
-
 GeometryMenu() {
   print('==============');
   print('1 - Quadrado');

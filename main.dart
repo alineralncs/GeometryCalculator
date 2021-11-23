@@ -1,5 +1,7 @@
 import 'dart:io';
+import 'dart:math';
 import 'GeometryCalculator.dart';
+
 //import 'opcoes.dart';
 
 GeometryMenu() {
@@ -23,6 +25,10 @@ funPrint() {
   print('\x1B[2J\x1B[0;0H');
 }
 
+calc_area_quadrado(double base, double altura) => print(base * altura);
+calc_area_triangulo(double base, double altura) => print(base * altura / 2);
+calc_area_circulo(double raio, double pi) => print(pi * pow(raio, 2));
+
 void main(List<String> arguments) {
   // A1SSIM COM INT
   // int? valor = int.parse(stdin.readLineSync()!);
@@ -41,6 +47,8 @@ void main(List<String> arguments) {
         print('digite sua escolha');
         int opcao = int.parse(stdin.readLineSync()!);
 
+        //a ideia era ter pego o tipo (square, triangle etc) e utilizado o
+        // codigo comentado abaixo para separar o valor, mas nao funcionou
         // final List<String> valoresSeparados = opcao!.split(",");
         // int tipo = int.tryParse(valoresSeparados[0]) ?? 0;
         // double baseFigura = double.tryParse(valoresSeparados[1]) ?? 0.0;
@@ -48,29 +56,23 @@ void main(List<String> arguments) {
         // double raioFigura = double.tryParse(valoresSeparados[3]) ?? 0.0;
 
         if (opcao == 1) {
-          print('quadrado');
-          double baseFigura = double.parse(stdin.readLineSync()!);
-          double alturaFigura = double.parse(stdin.readLineSync()!);
-          calc_area_quadrado(baseFigura, alturaFigura);
+          calc_area_quadrado(lerBase(''), lerAltura(''));
         } else if (opcao == 2) {
-          double baseFigura = double.parse(stdin.readLineSync()!);
-          double alturaFigura = double.parse(stdin.readLineSync()!);
-          calc_area_quadrado(baseFigura, alturaFigura);
-          print(calc_area_quadrado);
+          calc_area_quadrado(lerBase(''), lerAltura(''));
           //funPrint();
         } else if (opcao == 3) {
-          double baseFigura = double.parse(stdin.readLineSync()!);
-          double alturaFigura = double.parse(stdin.readLineSync()!);
-          calc_area_triangulo(baseFigura, alturaFigura);
+          calc_area_triangulo(lerBase(''), lerAltura(''));
         } else if (opcao == 4) {
-          double raioFigura = double.parse(stdin.readLineSync()!);
-          calc_area_circulo(raioFigura, pi);
+          print('valor do pi: 3.14');
+          calc_area_circulo(lerRaio(''), pi);
         } else {
           condicao2 = false;
           print(' Saindo da lista ');
           print(' Tchau ');
         }
       }
+    } else {
+      condicao = false;
     }
   }
 }
